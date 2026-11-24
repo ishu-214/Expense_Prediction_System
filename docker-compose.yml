@@ -1,10 +1,10 @@
 version: '3.8'
 
 services:
-  # 1. PostgreSQL Database Sandbox
+  # 1. PostgreSQL Database
   db:
     image: postgres:16-alpine
-    container_name: finance_postgres_sandbox
+    container_name: finance_postgres
     restart: unless-stopped
     environment:
       POSTGRES_USER: postgres
@@ -20,12 +20,12 @@ services:
       timeout: 5s
       retries: 10
 
-  # 2. FastAPI AI Backend Sandbox
+  # 2. FastAPI AI Backend
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: finance_backend_sandbox
+    container_name: finance_backend
     restart: unless-stopped
     environment:
       - DATABASE_URL=postgresql://postgres:postgrespassword@db:5432/finance_db
@@ -39,12 +39,12 @@ services:
     volumes:
       - ./backend:/app
 
-  # 3. React Frontend Web Application Sandbox
+  # 3. React Frontend Web Application
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    container_name: finance_frontend_sandbox
+    container_name: finance_frontend
     restart: unless-stopped
     ports:
       - "3000:80"

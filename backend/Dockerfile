@@ -1,4 +1,4 @@
-# Multi-stage / lightweight Python sandbox image
+# Multi-stage / lightweight Python image
 FROM python:3.11-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \

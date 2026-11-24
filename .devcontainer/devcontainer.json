@@ -1,5 +1,5 @@
 {
-  "name": "FinanceAI Cloud Sandbox",
+  "name": "FinanceAI Development Environment",
   "image": "mcr.microsoft.com/devcontainers/universal:2-linux",
   "features": {
     "ghcr.io/devcontainers/features/python:1": {

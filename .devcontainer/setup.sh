@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-echo "=== Setting up FinanceAI Sandbox in Cloud ==="
+echo "=== Setting up FinanceAI Environment ==="
 
 # 1. Setup Backend
 echo "-> Installing Backend dependencies..."
@@ -17,5 +17,4 @@ cd frontend
 npm install
 cd ..
 
-echo "=== Sandbox ready! ==="
-echo "To launch everything in parallel, run: bash start_sandbox.sh"
+echo "=== Setup ready! ==="

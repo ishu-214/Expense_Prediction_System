@@ -27,7 +27,7 @@ class Settings(BaseSettings):
         "*"
     ]
     
-    # ML Models path (auto-resolves in local, Docker, or Cloud Sandbox)
+    # ML Models path
     ML_MODELS_DIR: str = os.getenv(
         "ML_MODELS_DIR",
         os.path.abspath(os.path.join(os.path.dirname(__file__), "../ml/saved_models"))

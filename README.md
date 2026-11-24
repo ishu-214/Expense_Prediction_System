@@ -99,27 +99,15 @@ The web application dashboard will be live at:
 
 ---
 
-## 📦 Sandbox Execution (Run Anywhere Without Local Path Issues)
+## 🐳 Docker Container Deployment
 
-The system is equipped with **zero-setup sandbox environments** so anyone on any machine or operating system can run it instantly:
+Run isolated database, backend, and frontend containers with Docker Compose:
 
-### Option A: Cloud Sandbox (100% in Browser via GitHub Codespaces)
-1. Push repository to GitHub.
-2. Click **Code -> Codespaces -> Create codespace on main**.
-3. It provisions a cloud sandbox with Python, Node.js, and PostgreSQL pre-installed.
-4. Run `bash start_sandbox.sh` in the terminal to launch both servers with automatic public URLs!
-
-### Option B: Docker Container Sandbox
-Run isolated database, backend, and frontend containers:
 ```bash
 docker compose up --build
 ```
-- Frontend: `http://localhost:3000`
-- Backend API & Swagger: `http://localhost:8000/docs`
-
-### Option C: 1-Click Local Runner
-- **Windows**: Double-click `start_sandbox.bat`
-- **Linux/macOS**: Run `./start_sandbox.sh`
+- **Frontend Web UI**: `http://localhost:3000`
+- **Backend API & Swagger**: `http://localhost:8000/docs`
 
 ---
 
