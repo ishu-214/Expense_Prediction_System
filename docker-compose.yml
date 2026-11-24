@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  # 1. PostgreSQL Database Sandbox
+  db:
+    image: postgres:16-alpine
+    container_name: finance_postgres_sandbox
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+      POSTGRES_DB: finance_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d finance_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # 2. FastAPI AI Backend Sandbox
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: finance_backend_sandbox
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgrespassword@db:5432/finance_db
+      - SECRET_KEY=finance-ai-super-secret-key-change-in-production-2026
+      - ML_MODELS_DIR=/app/app/ml/saved_models
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app
+
+  # 3. React Frontend Web Application Sandbox
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: finance_frontend_sandbox
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+      - "5173:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

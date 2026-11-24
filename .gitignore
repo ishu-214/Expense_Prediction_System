@@ -1,0 +1,50 @@
+# Virtual Environments (Local system-specific paths)
+backend/venv/
+venv/
+env/
+.venv/
+ENV/
+pyvenv.cfg
+
+# Python Cache & Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node & Frontend dependencies
+frontend/node_modules/
+node_modules/
+frontend/dist/
+dist/
+.npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Database files
+backend/finance.db
+*.db
+*.sqlite3
+
+# Environment & Secret files
+.env
+backend/.env
+frontend/.env.local
+*.local
+
+# IDE & Editor settings
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Antigravity Brain logs
+.gemini/
+scratch/
